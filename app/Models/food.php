@@ -2,21 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection ;
 
-class food extends Model
+class Food extends Model
 {
-    use HasFactory;
+//    use HasFactory;
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'foods';
 
     public function ingredients()
     {
-        return $this->belongsToMany(Ingredient::class,
-            'food_ingredients',
-            'food_ingredients',
-            'food_id',
-            'ingredients_id')
-            ->withPivot('food_ingredients');
+        return $this->belongsToMany(Ingredient::class
+            , 'food_ingredients'
+            ,  'food_id'
+            ,"ingredients_id");
     }
 }

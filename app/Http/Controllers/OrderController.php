@@ -5,30 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB ;
 use Illuminate\Database\Eloquent\Collection ;
+use App\Models\Food ;
 
 class OrderController extends Controller
 {
-    //
 
     public function menu()
     {
-        $food = DB::table('foods')->find(1);
-        var_dump($food);
-        return $food->ingredients;
 
-        $menu = DB::table('foods')
-            ->get()
-            ->jsonSerialize();
+        $menu = Food::all();
 
         $response = array();
-//        dd($menu);
         foreach ($menu as $food)
         {
-            dd($food->ingredients);
+            $gredient_titles = array();
+
+            foreach ($food->ingredients as $gredient )
+                array_push($gredient_titles , $gredient->title);
+
+
             $food_with_grediens = array(
                 'title' => $food->title,
-//                "ingredients" => $food ->ingredients
+                "ingredients" => $gredient_titles
             );
+
 
             array_push($response, $food_with_grediens );
         }
