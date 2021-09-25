@@ -26,10 +26,7 @@ class CreateFoodTable extends Migration
      */
     public function down()
     {
-        Schema::table('foods' , function (Blueprint $table){
+        Schema::dropIfExists('foods');
 
-            $table->dropColumn('id');
-            $table->dropColumn('title');
-        });
     }
 }
