@@ -29,13 +29,7 @@ class CreateIngredientsTable extends Migration
      */
     public function down()
     {
-        Schema::table('ingredients' , function (Blueprint $table){
+        Schema::dropIfExists('ingredients');
 
-            $table->dropColumn('id');
-            $table->dropColumn('title');
-            $table->dropColumn('best-before');
-            $table->dropColumn('expires-at');
-            $table->dropColumn('stock');
-        });
     }
 }
