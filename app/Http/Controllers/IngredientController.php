@@ -11,7 +11,7 @@ class IngredientController extends Controller
     {
         DB::table('ingredients')
             ->update([
-                'stock' => 23
+                'stock' => DB::raw('stock+1')
             ]);
     }
 

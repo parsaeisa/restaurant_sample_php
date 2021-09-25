@@ -27,16 +27,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-//        $schedule->call(join('@',[ IngredientController::class,'fillWareHouse']))
-////            ->everyFifteenMinutes();
-//        ->everyMinute();
+        $schedule->call(join('@',[ IngredientController::class,'fillWareHouse']))
+            ->everyFifteenMinutes();
 
-        $schedule->call(function (){
-            DB::table('ingredients')
-                ->update([
-                    'stock' => 23
-                ]);
-        })->everyMinute();
     }
 
     /**
