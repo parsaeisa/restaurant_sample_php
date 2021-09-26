@@ -21,7 +21,7 @@ class OrderController extends Controller
 
             foreach ($food->ingredients as $ingredient )
             {
-                if($ingredient->stock == 0 )
+                if($ingredient->stock == 0 || $ingredient->expires_at < date("Y-m-d"))
                 {
                     $is_food_ready = false ;
                     break ;
