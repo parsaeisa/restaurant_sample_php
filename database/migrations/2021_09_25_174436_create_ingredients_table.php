@@ -16,8 +16,8 @@ class CreateIngredientsTable extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->unique();
-            $table->dateTime('best-before');
-            $table->dateTime('expires-at');
+            $table->dateTime('best_before');
+            $table->dateTime('expires_at');
             $table->integer('stock');
         });
     }
