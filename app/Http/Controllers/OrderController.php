@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB ;
-use Illuminate\Database\Eloquent\Collection ;
 use App\Models\Food ;
 
 class OrderController extends Controller
@@ -21,18 +19,11 @@ class OrderController extends Controller
 
             foreach ($food->ingredients as $ingredient )
             {
-                if($ingredient->stock == 0 )
+                if($ingredient->stock == 0 || $ingredient->expires_at < date("Y-m-d"))
                 {
                     $is_food_ready = false ;
                     break ;
                 }
-
-                DB::table('ingredients')
-                    ->where('id' , $ingredient->id)
-                    ->update([
-                        'stock' => DB::raw('stock-1')
-                    ]);
-
 
                 array_push($ingredient_titles, $ingredient->title);
             }
@@ -49,6 +40,23 @@ class OrderController extends Controller
         }
 
         return $response ;
+
+    }
+
+    public function order($food_id)
+    {
+
+        $food = Food::where('title' , $food_id)
+            ->first();
+        foreach ($food->ingredients as $ingredient)
+        {
+
+            DB::table('ingredients')
+                ->where('id', $ingredient->id)
+                ->update([
+                    'stock' => DB::raw('stock-1')
+                ]);
+        }
 
     }
 }
