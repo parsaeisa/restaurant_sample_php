@@ -18,18 +18,20 @@
   - https://www.sitepoint.com/how-to-install-php-on-windows/
 - define a database server named sample_project :
 
-'''sh
+
+```sh
 mysql -u root -p \
 create database sample_project
-'''
+```
 
 - change username and password in .env file
 - open terminal.
 - navigate to project directory . 
 - run :
-'''sh
+
+```sh
 php artisan serve
-'''
+```
 - the server is alive . now you can send requests to it . 
 
 ---
