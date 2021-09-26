@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/menu', [OrderController::class , 'menu'] );
+
+Route::get('/order/{food_id}' , [OrderController::class , 'order']);

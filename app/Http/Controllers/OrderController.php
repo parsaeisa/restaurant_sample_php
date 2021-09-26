@@ -27,13 +27,6 @@ class OrderController extends Controller
                     break ;
                 }
 
-                DB::table('ingredients')
-                    ->where('id' , $ingredient->id)
-                    ->update([
-                        'stock' => DB::raw('stock-1')
-                    ]);
-
-
                 array_push($ingredient_titles, $ingredient->title);
             }
 
@@ -49,6 +42,23 @@ class OrderController extends Controller
         }
 
         return $response ;
+
+    }
+
+    public function order($food_id)
+    {
+
+        $food = Food::where('title' , $food_id)
+            ->first();
+        foreach ($food->ingredients as $ingredient)
+        {
+
+            DB::table('ingredients')
+                ->where('id', $ingredient->id)
+                ->update([
+                    'stock' => DB::raw('stock-1')
+                ]);
+        }
 
     }
 }
