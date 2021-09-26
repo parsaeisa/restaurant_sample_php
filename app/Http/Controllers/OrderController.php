@@ -19,16 +19,26 @@ class OrderController extends Controller
         foreach ($menu as $food)
         {
             $gredient_titles = array();
+            $is_food_ready = true ;
 
             foreach ($food->ingredients as $gredient )
-                array_push($gredient_titles , $gredient->title);
+            {
+                if($gredient->stock == 0)
+                {
+                    $is_food_ready = false ;
+                    break ;
+                }
 
+                array_push($gredient_titles, $gredient->title);
+            }
+
+            if($is_food_ready == false)
+                continue ;
 
             $food_with_grediens = array(
                 'title' => $food->title,
                 "ingredients" => $gredient_titles
             );
-
 
             array_push($response, $food_with_grediens );
         }
