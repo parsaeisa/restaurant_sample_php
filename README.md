@@ -1,13 +1,14 @@
  sample_project
 ===============
 
----
+## a project to practice .
+
  Requirements
 ---
 
 - PHP 5.3 and above.
 - Mysql database server
----
+
 
  Installation
 ---
@@ -33,7 +34,6 @@ php artisan serve
 ```
 - the server is alive . now you can send requests to it . 
 
----
 API 's
 ---
 ### /menu : 
