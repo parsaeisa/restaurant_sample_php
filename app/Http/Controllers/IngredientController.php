@@ -51,16 +51,27 @@ class IngredientController extends Controller
             // add relations to the database
 
             foreach($food->ingredients as $ingredient)
+            {
+//                $ingredient_exists = DB::table('ingredients')
+//                    ->where('title' , $ingredient)
+//                    ->exists();
+//
+//                if($ingredient_exists == false)
 
 
-            DB::table('food_ingredients')
-                ->insert([
-                    'food_id' => DB::table('foods')->max('id') ,
-                    'ingredients_id' => DB::table('ingredients')
-                    ->where('title' , $ingredient)
-                    ->get(['id'])[0]
-                    ->id
-                ]);
+                try{
+                DB::table('food_ingredients')
+                    ->insert([
+                        'food_id' => DB::table('foods')->max('id'),
+                        'ingredients_id' => DB::table('ingredients')
+                            ->where('title', $ingredient)
+                            ->get(['id'])[0]
+                            ->id
+                    ]);
+                } catch (\ErrorException $e) {
+
+                }
+            }
 
         }
     }
