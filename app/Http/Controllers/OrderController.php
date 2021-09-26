@@ -13,21 +13,25 @@ class OrderController extends Controller
     public function menu()
     {
 
-        $menu = Food::all();
-
         $response = array();
-        foreach ($menu as $food)
+        foreach (Food::all() as $food)
         {
             $ingredient_titles = array();
             $is_food_ready = true ;
 
             foreach ($food->ingredients as $ingredient )
             {
-                if($ingredient->stock == 0)
+                if($ingredient->stock == 0 )
                 {
                     $is_food_ready = false ;
                     break ;
                 }
+
+                DB::table('ingredients')
+                    ->where('id' , $ingredient->id)
+                    ->update([
+                        'stock' => DB::raw('stock-1')
+                    ]);
 
 
                 array_push($ingredient_titles, $ingredient->title);
