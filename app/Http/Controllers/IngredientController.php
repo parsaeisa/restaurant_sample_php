@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB ;
-use mysql_xdevapi\Exception;
 
 class IngredientController extends Controller
 {
@@ -17,8 +16,7 @@ class IngredientController extends Controller
 
     public static function wareHouseFirstLoad()
     {
-
-        $firstIngredients = json_decode(file_get_contents('D:\backend\php\snappfood test\sample_prject1\sample_project\app\Http\Controllers\ingredients.json'));
+        $firstIngredients = json_decode(file_get_contents(base_path().'\app\Http\Controllers\ingredients.json'));
         foreach ($firstIngredients->ingredients as $ingredient)
         {
             try {
@@ -38,8 +36,7 @@ class IngredientController extends Controller
     public static function cookFoods()
     {
 
-        $food_index= 1 ;
-        $foods = json_decode(file_get_contents('D:\backend\php\snappfood test\sample_prject1\sample_project\app\Http\Controllers\foods.json'));
+        $foods = json_decode(file_get_contents(base_path().'\app\Http\Controllers\foods.json'));
         foreach ($foods->recipes as $food)
         {
             // add foods to the data base
@@ -49,15 +46,8 @@ class IngredientController extends Controller
                 ]);
 
             // add relations to the database
-
             foreach($food->ingredients as $ingredient)
             {
-//                $ingredient_exists = DB::table('ingredients')
-//                    ->where('title' , $ingredient)
-//                    ->exists();
-//
-//                if($ingredient_exists == false)
-
 
                 try{
                 DB::table('food_ingredients')
