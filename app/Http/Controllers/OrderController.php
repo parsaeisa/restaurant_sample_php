@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB ;
-use Illuminate\Database\Eloquent\Collection ;
 use App\Models\Food ;
 
 class OrderController extends Controller
