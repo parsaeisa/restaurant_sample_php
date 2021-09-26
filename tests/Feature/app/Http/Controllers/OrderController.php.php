@@ -25,8 +25,6 @@ class OrderControllerTest extends TestCase
     {
         $response = $this->get('/menu');
 
-        $response->asser
-
 
     }
 
