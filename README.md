@@ -30,6 +30,7 @@ create database sample_project
 - run :
 
 ```sh
+php artisan migrate 
 php artisan serve
 ```
 - the server is alive . now you can send requests to it . 
