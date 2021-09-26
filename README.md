@@ -1,8 +1,6 @@
  sample_project
 ===============
 
-### Implementation of food ordering system .
-
 ---
  Requirements
 ---
