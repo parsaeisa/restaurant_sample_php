@@ -1,7 +1,7 @@
  sample_project
 ===============
 
-## a project to practice .
+My code challenge for interview of  junior backend developer position in Snappfood . 
 
  Requirements
 ---
