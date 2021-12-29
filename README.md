@@ -3,15 +3,15 @@
 
 My code challenge for interview of  junior backend developer position in Snappfood . 
 
- Requirements
----
+### Requirements
+
 
 - PHP 5.3 and above.
 - Mysql database server
 
 
- Installation
----
+### Installation
+
 - install mysql database server
 - install php . based on the following link : 
   - https://www.sitepoint.com/how-to-install-php-on-windows/
@@ -34,8 +34,8 @@ php artisan serve
 ```
 - the server is alive . now you can send requests to it . 
 
-API 's
----
+### API 's
+
 ### /menu : 
 show all available foods with its ingredient
 
